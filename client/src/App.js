@@ -12,13 +12,27 @@ const res = items;
 function App() {
 
   const [items, setItems] = useState(res);
+  const [orders, setOrders] = useState([]);
+
+  console.log('тек элемент', orders);
   
+  const addToOrder = (item) => {
+  let isInArray = false;
+  orders.forEach((el) => {
+    if (el.id === item.id){
+      isInArray = true;
+    }
+  })
+    if (!isInArray) {
+      setOrders((prev) => [...prev, item]);
+  } 
+  }
 
 
   return (
     <div className="wrapper">
-      <Header />
-      <Items items={items} />
+      <Header orders={orders} />
+      <Items items={items} addToOrder={addToOrder} />
       <Footer />
     </div>
   );
