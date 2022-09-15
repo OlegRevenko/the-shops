@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { FaCartArrowDown } from "react-icons/fa";
 import Order from './Order';
 
-const showOrders = (orders) => {
+const showOrders = (orders,deleteOrder) => {
+  let summa = 0;
+  orders.forEach(el => summa += Number(el.price))
   return (<div>
     {orders.map((el) => (
-              <Order key={el.id} item={el}/>
-            ))} 
+              <Order deleteOrder={deleteOrder} key={el.id} item={el}/>
+            ))}
+       <p className='summa'>Сумма: {new Intl.NumberFormat().format(summa)} руб.</p>
   </div>)  
 }
 
@@ -19,7 +22,7 @@ const showNothing = () => {
 }
 
 
-const Header = ({orders}) => {
+const Header = ({orders, deleteOrder}) => {
 
   const [cartOpen, setCartOpen] = useState(false);
   
@@ -37,7 +40,7 @@ const Header = ({orders}) => {
         {cartOpen && (
           <div className='shop-cart'>
             {orders.length > 0 ?
-              showOrders(orders) : showNothing()}
+              showOrders(orders, deleteOrder) : showNothing()}
           </div>  
         )}
       </div>

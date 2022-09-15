@@ -4,17 +4,14 @@ import React, {useState} from 'react';
 import {items} from '../src/data'
 import { Items } from "./components/Items";
 
-const res = items;
-
-
+const DATAARRAY = items;
 
 
 function App() {
 
-  const [items, setItems] = useState(res);
+  const [items, setItems] = useState(DATAARRAY);
   const [orders, setOrders] = useState([]);
 
-  console.log('тек элемент', orders);
   
   const addToOrder = (item) => {
   let isInArray = false;
@@ -28,10 +25,14 @@ function App() {
   } 
   }
 
+  const deleteOrder = (id) => {
+    setOrders((prev) => prev.filter(el => el.id !== id))
+  }
+
 
   return (
     <div className="wrapper">
-      <Header orders={orders} />
+      <Header orders={orders} deleteOrder={deleteOrder} />
       <Items items={items} addToOrder={addToOrder} />
       <Footer />
     </div>
