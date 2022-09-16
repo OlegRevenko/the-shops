@@ -1,13 +1,13 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
-import { items } from '../data'
 
-export const Item = ({item, addToOrder}) => {
+export const Item = ({item, addToOrder, onShowItem}) => {
 
   
 
   return (
     <div className='item'>
-      <img src={"./img/" + item.img} />
+      <img src={"./img/" + item.img} onClick={() => onShowItem(item)} />
       <h2>{item.title}</h2>
       <p>{item.desc}</p>
       <b>{item.price}Руб</b>
