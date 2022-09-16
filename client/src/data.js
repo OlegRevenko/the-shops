@@ -1,34 +1,34 @@
 export const items = [
   {
     id: 1,
-    title: 'Стул зеленый',
+    title: 'Стулья зеленые',
     img: 'zel.jpeg',
     desc: 'TOPMAX',
-    category: 'Стулья и кресла',
+    category: 'Стулья зеленые',
     price: '5999',
   },
   {
     id: 2,
-    title: 'Стул розовый',
+    title: 'Стулья розовые',
     img: 'roz.jpeg',
     desc: 'TOPMAX',
-    category: 'Стулья и кресла',
+    category: 'Стулья розовые',
     price: '3500',
   },
   {
     id: 3,
-    title: 'Стул серый',
+    title: 'Стулья серые',
     img: 'ser.jpeg',
     desc: 'TOPMAX',
-    category: 'Стулья и кресла',
+    category: 'Стулья серые',
     price: '4000',
   },
   {
     id: 4,
-    title: 'Стул голубой',
+    title: 'Стулья голубые',
     img: 'gol.jpeg',
     desc: 'TOPMAX',
-    category: 'Стулья и кресла',
+    category: 'Стулья голубые',
     price: '8000',
   }
 ];

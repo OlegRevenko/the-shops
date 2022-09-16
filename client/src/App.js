@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import React, {useState} from 'react';
 import {items} from '../src/data'
 import { Items } from "./components/Items";
+import Categories from "./components/Categories";
 
 const DATAARRAY = items;
 
@@ -11,6 +12,7 @@ function App() {
 
   const [items, setItems] = useState(DATAARRAY);
   const [orders, setOrders] = useState([]);
+  const [currentItems, setCurrentItems] = useState(items)
 
   
   const addToOrder = (item) => {
@@ -29,11 +31,22 @@ function App() {
     setOrders((prev) => prev.filter(el => el.id !== id))
   }
 
+  const chooseCategory = (category) => {
+    console.log(category, 'category');
+
+    if (category === 'all') {
+      setCurrentItems(items)
+      return
+    }
+    setCurrentItems(items.filter(el => el.category === category))
+  }
+
 
   return (
     <div className="wrapper">
       <Header orders={orders} deleteOrder={deleteOrder} />
-      <Items items={items} addToOrder={addToOrder} />
+      <Categories chooseCategory={chooseCategory} />
+      <Items items={currentItems} addToOrder={addToOrder} />
       <Footer />
     </div>
   );
